@@ -1,0 +1,28 @@
+[project]
+name = "opsec-sentinel-ai"
+version = "0.1.0"
+description = "OPSEC Sentinel AI - defensive privacy and OPSEC auditing framework"
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [{ name = "OPSEC Sentinel AI" }]
+dependencies = [
+  "rich>=13.7",
+  "httpx>=0.27",
+  "python-dotenv>=1.0",
+]
+
+[project.optional-dependencies]
+browser = ["playwright>=1.41"]
+system = ["psutil>=5.9"]
+pdf = ["weasyprint>=61"]
+ai = ["anthropic>=0.40"]
+
+[project.scripts]
+opsec-sentinel = "opsec_sentinel_ai.cli.app:main"
+
+[tool.setuptools.packages.find]
+include = ["opsec_sentinel_ai*"]
+exclude = ["reports*"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
